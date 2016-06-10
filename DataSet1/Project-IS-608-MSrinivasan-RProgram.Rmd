@@ -1,0 +1,62 @@
+---
+title: "Final Project"
+author: "MuthukumarSrinivasan"
+date: "Friday, May 27, 2016"
+output: pdf_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+
+require(ggplot2)
+library(ggplot2)
+
+finalProject<-read.csv('c:/temp/SFSalries-Cleaned.csv',header=TRUE)
+finalProject100Rows<-read.csv('c:/temp/SFSalaries-sliced100Rows.csv',header=TRUE)
+summary(finalProject)
+str(finalProject)
+str(finalProject100Rows)
+
+```
+
+```{r}
+#### Chunck 2 in R Studie is about ALL Numeric colum boxplots. Box Plots for Base Pay, OvertimePay, OtherPay #### and TotalPay+Benefits
+
+boxplot(finalProject$BasePay)
+hist(finalProject$BasePay)
+
+boxplot(finalProject$OvertimePay)
+hist(finalProject$OvertimePay)
+
+boxplot(finalProject$OtherPay)
+hist(finalProject$OtherPay)
+
+boxplot(finalProject$TotalPay)
+hist(finalProject$TotalPay)
+
+boxplot(finalProject$TotalPayBenefits)
+hist(finalProject$TotalPayBenefits)
+
+```
+
+```{r}
+
+x1<-finalProject$Year
+y1<-finalProject$BasePay
+plot(x1,y1, main="Scatter Plot of SF Salries of DATA", xlab="Year", ylab="Base Pay",)
+
+x1<-finalProject$Year
+y1<-finalProject$TotalPay
+plot(x1,y1, main="Scatter Plot of SF Salries of DATA", xlab="Year", ylab="Total Pay",)
+
+x1<-finalProject$Year
+y1<-finalProject$TotalPayBenefits
+plot(x1,y1, main="Scatter Plot of SF Salries of DATA", xlab="Year", ylab="Total Pay + Benefits",)
+
+```
